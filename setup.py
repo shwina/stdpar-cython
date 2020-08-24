@@ -21,6 +21,11 @@ NVCPP_LIB_DIRS = [
 
 class custom_build_ext(build_ext):
     def build_extensions(self):
+        # Override the compiler executables. Importantly, this
+        # removes the "default" compiler flags that would
+        # otherwise get passed on to nvc++, i.e.,
+        # distutils.sysconfig.get_var("CFLAGS"). nvc++
+        # does not support all of those "default" flags
         self.compiler.set_executable("compiler_so", NVCPP_EXE)
         self.compiler.set_executable("compiler_cxx", NVCPP_EXE)
         self.compiler.set_executable("linker_so", NVCPP_EXE)
