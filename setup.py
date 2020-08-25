@@ -7,6 +7,8 @@ import sys
 from setuptools.command.build_ext import build_ext
 from collections import defaultdict
 
+import numpy as np
+
 
 NVCPP_EXE = shutil.which("nvc++")
 if not NVCPP_EXE:
@@ -36,7 +38,7 @@ ext = cythonize([
     Extension(
         '*',
         sources=['*.pyx'],
-        include_dirs=NVCPP_INC_DIRS,
+        include_dirs=NVCPP_INC_DIRS + [np.get_include()],
         library_dirs=NVCPP_LIB_DIRS,
         runtime_library_dirs=NVCPP_LIB_DIRS
     )])
