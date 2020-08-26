@@ -40,7 +40,9 @@ ext = cythonize([
         sources=['*.pyx'],
         include_dirs=NVCPP_INC_DIRS + [np.get_include()],
         library_dirs=NVCPP_LIB_DIRS,
-        runtime_library_dirs=NVCPP_LIB_DIRS
+        runtime_library_dirs=NVCPP_LIB_DIRS,
+        extra_compile_args=["-fPIC", "-stdpar", "-gpu=nordc", "-std=c++17"],
+        extra_link_args=["-shared", "-stdpar"]
     )])
 
 setup(name='stdpar_sort',

@@ -1,22 +1,18 @@
 # distutils: language=c++
-# distutils: extra_compile_args=-fPIC -stdpar=gpu -gpu=nordc -std=c++17
-# distutils: extra_link_args=-shared -stdpar=gpu
 
 from libcpp.execution cimport par
-from libcpp.algorithm cimport sort, copy
+from libcpp.algorithm cimport sort, copy_n
 from libcpp.vector cimport vector
 
 cimport numpy as np
 
-def cppsort(np.ndarray[np.double_t, ndim=1] x, parallel=False):
-    cdef vector[double] vec
-    vec.reserve(len(x))
+def cppsort(np.ndarray[np.float32_t, ndim=1] x):
+    """
+    Sort the elements of x "in-place" using std::sort
+    """
+    cdef vector[float] vec
     vec.resize(len(x))
-    copy(&x[0], &x[-1], vec.begin())
+    copy_n(&x[0], len(x), vec.begin())
+    sort(par, vec.begin(), vec.end())
+    copy_n(vec.begin(), len(x), &x[0])
 
-    if parallel:
-        sort(par, vec.begin(), vec.end())
-    else:
-        sort(vec.begin(), vec.end())
-
-    copy(vec.begin(), vec.end(), &x[0])
