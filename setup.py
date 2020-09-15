@@ -4,10 +4,8 @@ from setuptools import setup, Extension
 from setuptools.command.build_ext import build_ext
 from Cython.Build import cythonize
 
-import numpy as np
 
-
-include_dirs = [np.get_include()]
+include_dirs = []
 library_dirs = []
 
 

@@ -4,9 +4,7 @@ from libcpp.execution cimport par
 from libcpp.algorithm cimport sort, copy_n
 from libcpp.vector cimport vector
 
-cimport numpy as np
-
-def cppsort(np.ndarray[np.float32_t, ndim=1] x):
+def cppsort(float[:] x):
     """
     Sort the elements of x "in-place" using std::sort
     """
