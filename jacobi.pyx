@@ -1,4 +1,5 @@
 # distutils: language=c++
+# cython: cdivision=True
 
 from libcpp.execution cimport par, seq
 from libcpp.algorithm cimport any_of, for_each, swap, copy
