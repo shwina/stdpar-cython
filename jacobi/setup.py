@@ -4,12 +4,10 @@ from setuptools import setup, Extension
 from setuptools.command.build_ext import build_ext
 from Cython.Build import cythonize
 
-import numpy as np
 
-
-include_dirs = [np.get_include()]
+include_dirs = []
 library_dirs = []
-
+libraries = []
 
 # Try to find nvc++:
 NVCPP_EXE = shutil.which("nvc++")
@@ -27,6 +25,8 @@ if NVCPP_EXE is not None:
     library_dirs += [
         os.path.join(NVCPP_HOME, "lib")
     ]
+else:
+    libraries += ["tbb"]
 
 
 class custom_build_ext(build_ext):
@@ -55,6 +55,7 @@ ext = cythonize([
     Extension(
         '*',
         sources=['*.pyx'],
+        libraries=libraries,
         include_dirs=include_dirs,
         library_dirs=library_dirs,
         runtime_library_dirs=library_dirs,
