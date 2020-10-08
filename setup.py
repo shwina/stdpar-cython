@@ -1,5 +1,4 @@
 import  os
-import shutil
 from setuptools import setup, Extension
 from setuptools.command.build_ext import build_ext
 from Cython.Build import cythonize
@@ -9,14 +8,9 @@ include_dirs = []
 library_dirs = []
 libraries = []
 
-# Try to find nvc++:
-NVCPP_EXE = shutil.which("nvc++")
-if NVCPP_EXE is None:
-    NVCPP_EXE = os.environ.get("CC", None)
-
-if NVCPP_EXE is not None:
-    NVCPP_EXE = NVCPP_EXE if NVCPP_EXE.endswith("nvc++") else None
-
+CC = os.environ.get("CC", None)
+NVCPP_EXE = CC if CC is not None and CC.endswith("nvc++") else None
+    
 if NVCPP_EXE is not None:
     NVCPP_HOME = os.path.dirname(os.path.dirname(NVCPP_EXE))
     include_dirs += [
@@ -25,8 +19,6 @@ if NVCPP_EXE is not None:
     library_dirs += [
         os.path.join(NVCPP_HOME, "lib")
     ]
-else:
-    libraries += ["tbb"]
 
 
 class custom_build_ext(build_ext):
