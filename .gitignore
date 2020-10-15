@@ -192,3 +192,5 @@ dmypy.json
 *.cpp
 *.pyx
 *.pxd
+!algorithm.pxd
+!execution.pxd
