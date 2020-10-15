@@ -18,7 +18,13 @@ using Cython and [nvc++ with stdpar](https://developer.nvidia.com/blog/accelerat
    python -m pip install git+https://github.com/cython/cython@90684ac416f0349761074e242be4d981de40ce0f
    ```
 
-3. This step is optional. To run the CPU Parallel benchmarks, you will need `gcc >= 9.1`
+3. Install Python dependencies:
+
+   ```
+   python -m pip install numpy pandas matplotlib
+   ```
+
+4. This step is optional. To run the CPU Parallel benchmarks, you will need `gcc >= 9.1`
    as well as the [TBB](https://github.com/oneapi-src/oneTBB) library. On Ubuntu 20.04
    `gcc-9` should already be the default, and I did `apt install libtbb-dev` to get
    TBB.
