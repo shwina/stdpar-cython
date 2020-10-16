@@ -12,6 +12,8 @@ using Cython and [nvc++ with stdpar](https://developer.nvidia.com/blog/accelerat
    provides the `nvc++` compiler. A minimum version of 20.9 is required to run these examples.
    Note that unless your NVIDIA driver supports CUDA 11.0, you will want to download the version
    that is bundled with two previous CUDA versions (10.1 and 10.2).
+   
+   Once installed, please ensure that the `nvc++` executable is in your PATH.
 
 2. You will also need the development version of [Cython](https://github.com/cython/cython).
    The simplest way to get the minimum required version is to use `pip`:
