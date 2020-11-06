@@ -3,8 +3,8 @@
 These Notebooks demonstrate how to accelerate Python code on the GPU
 using Cython and [nvc++ with stdpar](https://developer.nvidia.com/blog/accelerating-standard-c-with-gpus-using-stdpar/).
 
-1. [Simple sort example](sort.ipynb)
-2. [Jacobi solver example](jacobi.ipynb)
+1. [Simple sort Notebook](sort.ipynb)
+2. [Jacobi solver Notebook](jacobi.ipynb)
 
 ## Requirements
 
