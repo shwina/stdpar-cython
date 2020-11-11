@@ -1,5 +1,7 @@
 # Examples of using Cython and nvc++ to GPU accelerate Python
 
+See the accompanying post on the NVIDIA Developer Blog [here](https://developer.nvidia.com/blog/accelerating-python-on-gpus-with-nvc-and-cython/).
+
 These Notebooks demonstrate how to accelerate Python code on the GPU
 using Cython and [nvc++ with stdpar](https://developer.nvidia.com/blog/accelerating-standard-c-with-gpus-using-stdpar/).
 
