@@ -17,6 +17,8 @@ using Cython and [nvc++ with stdpar](https://developer.nvidia.com/blog/accelerat
    
    Once installed, please ensure that the `nvc++` executable is in your PATH.
 
+   Further, your GPU must have CUDA capability >= 6.0 to exploit `-stdpar` feature.
+
 2. You will also need the development version of [Cython](https://github.com/cython/cython).
    The simplest way to get the minimum required version is to use `pip`:
 
