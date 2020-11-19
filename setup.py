@@ -1,4 +1,4 @@
-import  os
+import os
 from setuptools import setup, Extension
 from setuptools.command.build_ext import build_ext
 from Cython.Build import cythonize
@@ -21,6 +21,7 @@ if NVCPP_EXE is not None:
     ]
 
 
+# noinspection PyPep8Naming
 class custom_build_ext(build_ext):
     def build_extensions(self):
         if NVCPP_EXE:
